@@ -1,5 +1,5 @@
 """
-chengyu-mcp —— 成语学习 MCP 服务器
+chengyu-coach-mcp —— 成语学习 MCP 服务器
 
 基于官方 Python SDK（mcp v2 的 MCPServer），把 chengyu_common.json（3303 条常用成语）
 变成一份可以"抽卡学习"的词库：
@@ -12,11 +12,11 @@ chengyu-mcp —— 成语学习 MCP 服务器
 掌握状态：learning（还不熟）→ reviewing（基本会但不稳）→ mastered（能熟练解释和造句）。
 状态由 AI 依据对话自行判断更新，服务端不自动判分。
 
-存储：SQLite（默认 ~/.chengyu-mcp/idiom_progress.db，可用环境变量 CHENGYU_MCP_DB 覆盖），
+存储：SQLite（默认 ~/.chengyu-coach/idiom_progress.db，可用环境变量 CHENGYU_COACH_DB 覆盖），
       词库为随包分发的只读 JSON。
 传输：stdio。
 
-运行：python -m chengyu_mcp.server
+运行：python -m chengyu_coach_mcp.server
 """
 
 import json
@@ -33,15 +33,15 @@ from mcp.server.mcpserver.exceptions import ToolError
 
 from . import __version__
 
-DICT_PATH = pkg_files("chengyu_mcp").joinpath("data/chengyu_common.json")
+DICT_PATH = pkg_files("chengyu_coach_mcp").joinpath("data/chengyu_common.json")
 DB_PATH = Path(
-    os.environ.get("CHENGYU_MCP_DB")
-    or Path.home() / ".chengyu-mcp" / "idiom_progress.db"
+    os.environ.get("CHENGYU_COACH_DB")
+    or Path.home() / ".chengyu-coach" / "idiom_progress.db"
 )
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 mcp = MCPServer(
-    name="chengyu-mcp",
+    name="chengyu-coach-mcp",
     version=__version__,
     instructions=(
         "成语学习服务器：用 draw_idiom 随机抽成语，用 idiom_detail/search_idiom 查词，"
@@ -395,7 +395,7 @@ def main() -> None:
     import sys
 
     print(
-        f"chengyu-mcp {__version__} 已启动：词库 {len(DICT)} 条，学习记录 {DB_PATH}",
+        f"chengyu-coach-mcp {__version__} 已启动：词库 {len(DICT)} 条，学习记录 {DB_PATH}",
         file=sys.stderr,
     )
     mcp.run()

@@ -1,4 +1,4 @@
-# chengyu-mcp
+# chengyu-coach-mcp
 
 成语学习 MCP 服务器（Python，`mcp` SDK v2 的 `MCPServer`，stdio 传输）。内置 3303 条常用成语，学习进度存在本地 SQLite，让任意 MCP 客户端（Qoder / Claude Desktop / Cursor 等）帮你每天抽几个成语学，并根据聊天表现自动记录掌握程度。
 
@@ -12,16 +12,16 @@
 ## 安装
 
 ```bash
-pip install chengyu-mcp        # 发布到 PyPI 后
+pip install chengyu-coach-mcp        # 发布到 PyPI 后
 # 或使用 uv
-uvx chengyu-mcp
+uvx chengyu-coach-mcp
 ```
 
 从源码安装：
 
 ```bash
-git clone <repo-url> chengyu-mcp
-cd chengyu-mcp
+git clone <repo-url> chengyu-coach-mcp
+cd chengyu-coach-mcp
 python -m venv .venv
 .venv/Scripts/pip install -e .        # Windows；macOS/Linux 用 .venv/bin/pip
 ```
@@ -33,9 +33,9 @@ python -m venv .venv
 ```json
 {
   "mcpServers": {
-    "chengyu": {
+    "chengyu-coach": {
       "command": "uvx",
-      "args": ["chengyu-mcp"]
+      "args": ["chengyu-coach-mcp"]
     }
   }
 }
@@ -46,9 +46,9 @@ python -m venv .venv
 ```json
 {
   "mcpServers": {
-    "chengyu": {
+    "chengyu-coach": {
       "command": "<项目路径>/.venv/Scripts/python.exe",
-      "args": ["-m", "chengyu_mcp.server"]
+      "args": ["-m", "chengyu_coach_mcp.server"]
     }
   }
 }
@@ -57,7 +57,7 @@ python -m venv .venv
 调试可用官方 MCP Inspector：
 
 ```bash
-npx @modelcontextprotocol/inspector uvx chengyu-mcp
+npx @modelcontextprotocol/inspector uvx chengyu-coach-mcp
 ```
 
 ## 提供的能力
@@ -80,9 +80,9 @@ npx @modelcontextprotocol/inspector uvx chengyu-mcp
 
 ## 数据与隐私
 
-- 学习记录默认写入 `~/.chengyu-mcp/idiom_progress.db`，可用环境变量 `CHENGYU_MCP_DB` 指定其他路径
+- 学习记录默认写入 `~/.chengyu-coach/idiom_progress.db`，可用环境变量 `CHENGYU_COACH_DB` 指定其他路径
 - 数据只存在本机，不联网、不上传
-- 词库随包分发，只读；替换 `src/chengyu_mcp/data/chengyu_common.json` 即可换词库（数组，每条需含 `word/pinyin/explanation/derivation/example/id`）
+- 词库随包分发，只读；替换 `src/chengyu_coach_mcp/data/chengyu_common.json` 即可换词库（数组，每条需含 `word/pinyin/explanation/derivation/example/id`）
 
 `user_word` 表结构：
 
@@ -105,8 +105,8 @@ python -m venv .venv
 项目结构：
 
 ```
-chengyu-mcp/
-├── src/chengyu_mcp/
+chengyu-coach-mcp/
+├── src/chengyu_coach_mcp/
 │   ├── __init__.py          # 版本号
 │   ├── server.py            # 词库加载 + SQLite + 全部工具/资源/提示词
 │   └── data/chengyu_common.json   # 常用成语词库（3303 条）
@@ -118,7 +118,7 @@ chengyu-mcp/
 └── CHANGELOG.md
 ```
 
-发布新版本时同步改三处：`pyproject.toml` 的 `version`、`src/chengyu_mcp/__init__.py` 的 `__version__`、`CHANGELOG.md`。
+发布新版本时同步改三处：`pyproject.toml` 的 `version`、`src/chengyu_coach_mcp/__init__.py` 的 `__version__`、`CHANGELOG.md`。
 
 ## 数据来源与许可
 

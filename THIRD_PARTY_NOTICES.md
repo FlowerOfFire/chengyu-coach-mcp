@@ -1,7 +1,7 @@
 # Third-Party Notices
 
 本项目代码以 MIT 许可发布（见根目录 `LICENSE`）。随包分发的成语词库
-`src/chengyu_mcp/data/chengyu_common.json` 派生自以下项目，其许可见对应链接：
+`src/chengyu_coach_mcp/data/chengyu_common.json` 派生自以下项目，其许可见对应链接：
 
 ## 1. chinese-xinhua（成语文本数据）
 

@@ -11,4 +11,4 @@
 *.ico binary
 
 # 词库为自动生成数据：折叠 diff、不计入语言统计
-src/chengyu_mcp/data/*.json linguist-generated=true
+src/chengyu_coach_mcp/data/*.json linguist-generated=true

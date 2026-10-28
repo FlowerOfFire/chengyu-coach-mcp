@@ -3,13 +3,13 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "chengyu-mcp"
+name = "chengyu-coach-mcp"
 version = "1.0.0"
 description = "成语学习 MCP 服务器：随机抽词、查询抽中次数、记录掌握状态与备注"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "chengyu-mcp contributors" }]
+authors = [{ name = "chengyu-coach-mcp contributors" }]
 keywords = ["mcp", "model-context-protocol", "chengyu", "idiom", "chinese", "learning"]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -28,7 +28,7 @@ dependencies = ["mcp>=2.0.0"]
 dev = ["build>=1.2", "twine>=5.0"]
 
 [project.scripts]
-chengyu-mcp = "chengyu_mcp.server:main"
+chengyu-coach-mcp = "chengyu_coach_mcp.server:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
@@ -37,4 +37,4 @@ package-dir = { "" = "src" }
 where = ["src"]
 
 [tool.setuptools.package-data]
-chengyu_mcp = ["data/*.json"]
+chengyu_coach_mcp = ["data/*.json"]

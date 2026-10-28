@@ -10,7 +10,7 @@
 - Tools：`draw_idiom`、`idiom_detail`、`search_idiom`、`update_status`、`add_note`、`progress`、`reset_word`
 - Resources：`chengyu://{word}`、`chengyu://stats`
 - Prompts：`learn_idiom`、`quiz_me`
-- SQLite 学习记录，默认 `~/.chengyu-mcp/idiom_progress.db`，可用 `CHENGYU_MCP_DB` 覆盖
+- SQLite 学习记录，默认 `~/.chengyu-coach/idiom_progress.db`，可用 `CHENGYU_COACH_DB` 覆盖
 - 端到端冒烟测试与 GitHub Actions CI（Linux/Windows × Python 3.10/3.12）
 
 ### Changed

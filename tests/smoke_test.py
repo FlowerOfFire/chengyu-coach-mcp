@@ -1,9 +1,9 @@
 """
-端到端冒烟测试：以 stdio 子进程启动 chengyu_mcp 服务器，
+端到端冒烟测试：以 stdio 子进程启动 chengyu_coach_mcp 服务器，
 覆盖 initialize → 能力列表 → 抽题（不重复）→ 查词/搜索 → 更新状态/备注 → 进度 → 资源 → prompt。
 
 运行：python tests/smoke_test.py（需要先 pip install -e .）
-使用临时数据库（CHENGYU_MCP_DB），不会污染本机学习记录。
+使用临时数据库（CHENGYU_COACH_DB），不会污染本机学习记录。
 """
 
 import asyncio
@@ -15,7 +15,7 @@ from pathlib import Path
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-TMP_DB = Path(tempfile.gettempdir()) / "chengyu-mcp-smoke.db"
+TMP_DB = Path(tempfile.gettempdir()) / "chengyu-coach-mcp-smoke.db"
 TMP_DB.unlink(missing_ok=True)
 
 
@@ -26,8 +26,8 @@ def text(result) -> str:
 async def main() -> None:
     params = StdioServerParameters(
         command=sys.executable,
-        args=["-m", "chengyu_mcp.server"],
-        env={**os.environ, "CHENGYU_MCP_DB": str(TMP_DB)},
+        args=["-m", "chengyu_coach_mcp.server"],
+        env={**os.environ, "CHENGYU_COACH_DB": str(TMP_DB)},
     )
 
     async with stdio_client(params) as (read, write):
