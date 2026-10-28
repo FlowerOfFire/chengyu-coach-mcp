@@ -8,13 +8,13 @@ version = "1.0.0"
 description = "成语学习 MCP 服务器：随机抽词、查询抽中次数、记录掌握状态与备注"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE", "LICENSES/*"]
 authors = [{ name = "chengyu-coach-mcp contributors" }]
 keywords = ["mcp", "model-context-protocol", "chengyu", "idiom", "chinese", "learning"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: End Users/Desktop",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
