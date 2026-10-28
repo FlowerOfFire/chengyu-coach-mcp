@@ -23,3 +23,8 @@ htmlcov/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# ---- MCP Registry 发布工具（本地下载，勿提交）----
+mcp-publisher
+mcp-publisher.exe
+mcp-publisher*.tar.gz

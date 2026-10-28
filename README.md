@@ -1,5 +1,7 @@
 # chengyu-coach-mcp
 
+<!-- mcp-name: io.github.FlowerOfFire/chengyu-coach-mcp -->
+
 成语学习 MCP 服务器（Python，`mcp` SDK v2 的 `MCPServer`，stdio 传输）。内置 3303 条常用成语，学习进度存在本地 SQLite，让任意 MCP 客户端（Qoder / Claude Desktop / Cursor 等）帮你每天抽几个成语学，并根据聊天表现自动记录掌握程度。
 
 - **抽词**：优先抽没抽过的；一轮抽完后按"抽得最少 + 最久没抽"轮转；默认跳过最近 20 条和已掌握的
@@ -112,13 +114,22 @@ chengyu-coach-mcp/
 │   └── data/chengyu_common.json   # 常用成语词库（3303 条）
 ├── tests/smoke_test.py      # stdio 端到端测试
 ├── .github/workflows/ci.yml # Linux/Windows × Python 3.10/3.12
+├── .github/workflows/release.yml  # 推 v* 标签自动发布到 PyPI（OIDC）
+├── server.json              # 官方 MCP Registry 元数据
 ├── pyproject.toml
 ├── LICENSE                  # MIT（代码）
 ├── THIRD_PARTY_NOTICES.md   # 词库来源与许可
 └── CHANGELOG.md
 ```
 
-发布新版本时同步改三处：`pyproject.toml` 的 `version`、`src/chengyu_coach_mcp/__init__.py` 的 `__version__`、`CHANGELOG.md`。
+发布新版本时同步改三处：`pyproject.toml` 的 `version`、`src/chengyu_coach_mcp/__init__.py` 的 `__version__`、`CHANGELOG.md`；`server.json` 里的 `version` 与 `packages[0].version` 也要跟上。改完打标签并推送，`release.yml` 会校验四处版本号一致后自动构建上传：
+
+```bash
+git tag -a v1.0.1 -m "chengyu-coach-mcp v1.0.1"
+git push origin main --tags
+```
+
+README 顶部那行 `<!-- mcp-name: io.github.FlowerOfFire/chengyu-coach-mcp -->` 是给官方 MCP Registry 验证包所有权用的，发布到 PyPI 的版本里必须带着它，删掉会导致 `mcp-publisher publish` 失败。
 
 ## 数据来源与许可
 

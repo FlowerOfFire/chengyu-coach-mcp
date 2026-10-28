@@ -15,6 +15,12 @@ from pathlib import Path
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+# Windows 上 stdout 被重定向到管道时默认用区域编码（英文区是 cp1252），
+# 打印中文和「✔」会抛 UnicodeEncodeError。测试输出统一走 UTF-8。
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 TMP_DB = Path(tempfile.gettempdir()) / "chengyu-coach-mcp-smoke.db"
 TMP_DB.unlink(missing_ok=True)
 

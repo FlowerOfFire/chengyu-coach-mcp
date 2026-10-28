@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.FlowerOfFire/chengyu-coach-mcp",
+  "title": "Chengyu Coach",
+  "description": "成语学习服务器：随机抽成语、查释义与出处，并按对话表现记录掌握程度",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/FlowerOfFire/chengyu-coach-mcp",
+    "source": "github",
+    "id": "1437318485"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "chengyu-coach-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

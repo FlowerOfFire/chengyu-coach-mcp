@@ -394,6 +394,11 @@ def quiz_me(count: str = "5") -> str:
 def main() -> None:
     import sys
 
+    # MCP SDK 已把协议通道（stdin/stdout）强制成 UTF-8，但启动横幅是我们自己写的，
+    # 走的是 stderr 的区域编码——英文区 Windows 上会变成 \uXXXX 乱码，先切到 UTF-8。
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
     print(
         f"chengyu-coach-mcp {__version__} 已启动：词库 {len(DICT)} 条，学习记录 {DB_PATH}",
         file=sys.stderr,
